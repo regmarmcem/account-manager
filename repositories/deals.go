@@ -10,7 +10,7 @@ import (
 func SelectDealList(db *sql.DB) ([]models.Deal, error) {
 	sqlStr := `
 		select
-			id, date, category_id, amount, description
+			id, date, amount, category_id, description
 		from
 			deals;
 	`
@@ -24,7 +24,7 @@ func SelectDealList(db *sql.DB) ([]models.Deal, error) {
 	dealArray := make([]models.Deal, 0)
 	for rows.Next() {
 		var deal models.Deal
-		rows.Scan(&deal.ID, &deal.Date, &deal.CategoryID, &deal.Amount, &deal.Description)
+		rows.Scan(&deal.ID, &deal.Date, &deal.Amount, &deal.CategoryID, &deal.Description)
 
 		dealArray = append(dealArray, deal)
 	}

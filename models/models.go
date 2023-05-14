@@ -17,7 +17,7 @@ type MonthlyDealSummary struct {
 type Deal struct {
 	ID          int       `json:"id"`
 	Date        time.Time `json:"deal_date"`
-	CategoryID  time.Time `json:"category_id"`
 	Amount      int       `json:"amount"`
-	Description int       `json:"description"`
+	CategoryID  int       `json:"category_id"`
+	Description string    `json:"description"`
 }
