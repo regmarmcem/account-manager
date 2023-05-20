@@ -15,7 +15,7 @@ import (
 func main() {
 	err := godotenv.Load(".env")
 	if err != nil {
-		log.Fatal(".env file not found")
+		log.Panic(".env file not found")
 	}
 
 	dbHost := os.Getenv("DB_HOSTNAME")
@@ -27,10 +27,10 @@ func main() {
 	conn := fmt.Sprintf("host=%s port=%s dbname=%s user=%s password=%s sslmode=disable", dbHost, dbPort, dbName, dbUser, dbPass)
 	db, err := sql.Open("postgres", conn)
 	if err != nil {
-		log.Fatal("failed to connect database")
+		log.Panic("failed to connect database")
 	}
 
 	r := api.NewRouter(db)
 	fmt.Println("web server starting...")
-	log.Fatal(http.ListenAndServe("localhost:8080", r))
+	log.Panic(http.ListenAndServe("localhost:8080", r))
 }
